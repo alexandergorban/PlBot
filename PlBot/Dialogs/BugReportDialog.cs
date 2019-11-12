@@ -165,7 +165,7 @@ namespace PlBot.Dialogs
             if (promptContext.Recognized.Succeeded)
             {
                 valid = Regex.Match(promptContext.Recognized.Value,
-                    @"^(\+\d{1,2}\s)?\(?d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$").Success;
+                    @"^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$").Success;
             }
 
             return Task.FromResult(valid);
