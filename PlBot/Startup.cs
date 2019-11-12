@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 using PlBot.Bots;
+using PlBot.Dialogs;
 using PlBot.Services;
 
 namespace PlBot
@@ -36,8 +37,15 @@ namespace PlBot
             // Configure State
             ConfigureState(services);
 
+            ConfigureDialogs(services);
+
             // Create the bot as a transient. In this case the ASP Controller is expecting an IBot.
-            services.AddTransient<IBot, GreetingBot>();
+            services.AddTransient<IBot, DialogBot<MainDialog>>();
+        }
+
+        public void ConfigureDialogs(IServiceCollection services)
+        {
+            services.AddSingleton<MainDialog>();
         }
 
         public void ConfigureState(IServiceCollection services)
