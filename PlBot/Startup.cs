@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Bot.Builder;
+using Microsoft.Bot.Builder.Azure;
 using Microsoft.Bot.Builder.Integration.AspNet.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -52,6 +53,11 @@ namespace PlBot
         {
             // Create the storage we'll be using for User and Conversation state. (Memory is grate for testing purposes.)
             services.AddSingleton<IStorage, MemoryStorage>();
+
+            // Azure Storage Account
+            //var connectionString = "";
+            //var storageContainer = "";
+            //services.AddSingleton<IStorage>(new AzureBlobStorage(connectionString, storageContainer));
 
             // Create the User state.
             services.AddSingleton<UserState>();
